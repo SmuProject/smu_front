@@ -49,6 +49,8 @@ function Leader(){
         }
     ])
 
+    
+
     return(
         <>
         <div className='leaderBtn'>
