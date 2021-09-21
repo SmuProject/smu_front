@@ -39,7 +39,7 @@ function Item() {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "https://blog.galbimandu.dev/champion"
+          "https://blog.galbimandudev.com/champion"
         );
         console.log(response.data);
         setChampions(response.data);
