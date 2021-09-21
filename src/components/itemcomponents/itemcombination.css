@@ -1,29 +1,63 @@
 .itemComBox {
-    width: 330px;
-    height: 60px;
-    background-color: lightblue;
-    position: absolute;
+  width: 330px;
+  height: 60px;
+  background-color: lightblue;
+  position: absolute;
 }
 
-.arrow-right{
-	width: 0;
-	height: 0;
-	border-top: 20px solid transparent;
-	border-bottom: 20px solid transparent;
-	border-left: 20px solid purple;
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid purple;
 }
 
 .itemComBoxLine {
-    width: 750px;
-    height: 500px;
-    float: left;
-    background-color: darkcyan;
-    text-align: center;
+  width: 750px;
+  height: 500px;
+  float: left;
+  background-color: darkcyan;
+  text-align: center;
 }
 
-.item-rate{
-    width: 750px;
-    height: 500px;
-    float: left;
-    margin-left: 10%;
+.itemRanked {
+  float: left;
+  width: 50px;
+  text-align: center;
+  margin-top: 45px;
+  font-weight: bold;
+  font-family: paybooc;
+}
+
+.itemOut {
+  width: 750px;
+  float: left;
+  margin-bottom: 20px;
+}
+
+.item-rate {
+  width: 750px;
+  height: 500px;
+  float: left;
+  /* margin-left: 10%; */
+}
+
+.Item {
+  float: left;
+  width: 425px;
+}
+
+.itemRates {
+  width: 200px;
+
+  float: left;
+  margin-top: 40px;
+  margin-left: 15px;
+}
+
+.itemRates2 {
+  margin-top: 40px;
+  width: 100px;
+  float: left;
 }
