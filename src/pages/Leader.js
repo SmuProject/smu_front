@@ -34,7 +34,9 @@ function Leader() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const rep = await axios.get("http://localhost:8080/summoner/leader");
+      const rep = await axios.get(
+        "https://blog.galbimandu.dev/summoner/leader"
+      );
       setUsers(rep.data);
     };
     fetchUsers();
@@ -108,7 +110,7 @@ function Leader() {
 
     const formdata = new FormData();
     formdata.append("address", inputCode.email);
-    const rep = await axios.post("http://localhost:8080/email", formdata);
+    const rep = await axios.post("https://blog.galbimandu.dev/email", formdata);
     const data = rep.data;
     console.log(data);
     setAlarm({ ...alarm, allowCode: data });
@@ -149,7 +151,7 @@ function Leader() {
     formdata.append("name", inputCode.summonerName);
     try {
       const rep = await axios.post(
-        "http://localhost:8080/summoner/test",
+        "https://blog.galbimandu.dev/summoner/test",
         formdata
       );
       console.log(false);

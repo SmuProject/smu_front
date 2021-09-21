@@ -40,7 +40,9 @@ function Chamipon() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("/champion");
+        const response = await axios.get(
+          "https://blog.galbimandu.dev/champion"
+        );
         console.log(response.data);
         setChampions(response.data); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {

@@ -21,7 +21,9 @@ const Itembox = ({ chamiponNumber }) => {
   useEffect(() => {
     const getItemRank = async () => {
       try {
-        const rep = await axios.get("itemrank/" + chamiponNumber);
+        const rep = await axios.get(
+          "https://blog.galbimandu.dev/itemrank/" + chamiponNumber
+        );
         console.log(rep.data);
         setItemboxList(rep.data);
         setLine("TOP");

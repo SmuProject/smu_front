@@ -12,7 +12,9 @@ function Test({ id }) {
 
     const getData = async (id) => {
       try {
-        const rep = await axios.get("champion/rate/" + id);
+        const rep = await axios.get(
+          "https://blog.galbimandu.dev/champion/rate/" + id
+        );
         console.log(rep.data);
         const chmpion1 =
           rep.data.championRank1 !== null

@@ -38,7 +38,9 @@ function Item() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("/champion");
+        const response = await axios.get(
+          "https://blog.galbimandu.dev/champion"
+        );
         console.log(response.data);
         setChampions(response.data);
         setGetData(true);
