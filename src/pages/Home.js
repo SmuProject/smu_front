@@ -17,12 +17,12 @@ class Home extends Component{
     return (
         <>
         <div>
-            <Input 
-                onCreate={this.handleCreate} 
+            <Input
+                onCreate={this.handleCreate}
                 history ={this.props.history}
         />
         </div>
-        
+
         <div className='img-box'>
             <div className='box'>
                 <Link to='/champion'>

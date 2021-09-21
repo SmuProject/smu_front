@@ -1,53 +1,166 @@
-import {React, useState, useRef} from 'react';
-import CreateUser from './CreateUser';
-import CreateUser2 from './CreateUser2';
-import './leader.css';
-import UserList from './UserList';
+import { React, useState, useEffect } from "react";
+import validator from "validator";
+import CreateUser2 from "./CreateUser2";
+import "./leader.css";
+import UserList from "./UserList";
+import styled from "styled-components";
+import axios from "axios";
 
-function Leader(){
-    const [isShowing, setisShowing] = useState(false);
+const Modal = styled.div`
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  border-radius: 10px;
+`;
 
-    const openModal = () => {
-        setisShowing(true);
+const CloseModal = styled.button`
+  margin: 30px;
+  width: 50px;
+  height: 40px;
+  background-color: skyblue;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  background-color: #008cba;
+  color: white;
+`;
+
+function Leader() {
+  const [isShowing, setisShowing] = useState(false);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const rep = await axios.get(
+        "https://blog.galbimandu.dev/summoner/leader"
+      );
+      setUsers(rep.data);
     };
+    fetchUsers();
+  }, [isShowing]);
 
-    const closeModal = () => {
-        setisShowing(false);
-    };
-    
-    const [inputs, setInputs] = useState({
-        username:''
+  const [inputCode, setInputCode] = useState({
+    email: "",
+    typeCode: "",
+    summonerName: "",
+  });
+  const [alarm, setAlarm] = useState({
+    allowCode: "",
+    code: 0,
+    text: "",
+  });
+  const [error, setError] = useState({
+    emailError: "",
+    allowCodeError: "",
+    summonerError: "",
+  });
+
+  const [inputs, setInputs] = useState({
+    username: "",
+  });
+  const { username } = inputs;
+
+  const openModal = () => {
+    setisShowing(true);
+  };
+
+  const closeModal = () => {
+    console.log("11");
+    setisShowing(false);
+    setInputCode({
+      email: "",
+      typeCode: "",
+      summonerName: "",
     });
-    const {username} = inputs;
+    setAlarm({
+      code: 0,
+      text: "",
+    });
+    setError({
+      emailError: "",
+      allowCodeError: "",
+      summonerError: "",
+    });
+  };
 
-    const onChange = e => {
-        const {name, value} = e.target;
-        setInputs({
-            ...inputs,
-            [name]: value
-        });
+  const onChangeInputs = (e) => {
+    setInputCode({ ...inputCode, [e.target.id]: e.target.value });
+  };
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const sendEmail = async () => {
+    if (inputCode.email === "") {
+      setError({ ...error, emailError: "email을 입력해주세요" });
+      return;
+    }
+    if (!validator.isEmail(inputCode.email)) {
+      setError({ ...error, emailError: "email 양식을 지키지 않았습니다." });
+      return;
     }
 
-   
-    const nextId = useRef(2);
-    const onCreate = () => {
-        const user = {
-            id: nextId.current,
-            username
-        };
-        setUsers([...users, user]);
-        setInputs({
-            username:''
-        });
-        console.log(nextId.current);
-        nextId.current += 1;
-    }
-    const [users, setUsers] = useState([
-        {
-            id: 1,
-            username:'알콩이'
+    const formdata = new FormData();
+    formdata.append("address", inputCode.email);
+    const rep = await axios.post("https://blog.galbimandu.dev/email", formdata);
+    const data = rep.data;
+    console.log(data);
+    setAlarm({ ...alarm, allowCode: data });
+    setError({ ...error, emailError: "이메일이 발송되었습니다." });
+  };
+
+  const onClickCode = () => {
+    console.log(alarm.allowCode);
+    if (alarm.allowCode === "") {
+      alert("이메일 인증부터 진행해주세요");
+    } else {
+      if (alarm.allowCode === inputCode.typeCode) {
+        setAlarm({ ...alarm, code: 2, text: "인증되었습니다." });
+      } else {
+        if (inputCode.typeCode.length !== 0) {
+          setAlarm({
+            ...alarm,
+            code: 1,
+            text: "인증번호가 틀렸습니다.",
+          });
+        } else {
+          setAlarm({
+            ...alarm,
+            code: 1,
+            text: "인증번호를 입력해주세요",
+          });
         }
-    ])
+      }
+    }
+  };
+  const onCreate = async () => {
+    console.log(">>>", alarm.code);
+    if (alarm.code === 0 || alarm.code === 1) {
+      alert("이메일 인증부터 진행해주세요!");
+      return;
+    }
+    const formdata = new FormData();
+    formdata.append("name", inputCode.summonerName);
+    try {
+      const rep = await axios.post(
+        "https://blog.galbimandu.dev/summoner/test",
+        formdata
+      );
+      console.log(false);
+      closeModal();
+    } catch {
+      setError({ ...error, summonerError: "잘못된 소환사명입니다." });
+    }
+  };
 
     
 
@@ -57,48 +170,82 @@ function Leader(){
             <button type='submit' className='searchBtn' onClick={openModal}>내 아이디 등록하기</button>
         </div>
 
-        {isShowing &&
-        <div className='modal-wrapper' >
-            <div className='modal'>
-                <div className='modal-title'>내 아이디 등록하기</div>
-                <p className='modalT'>학교 이메일을 입력해주세요.</p>
-                <input className='modalB' placeholder='학교이메일'></input>
-                <button className='selectB'>인증</button>
-                <p className='modalT'>인증번호를 입력해주세요.</p>
-                <input className='modalB' placeholder='인증번호'></input>
-                <button className='selectB'>확인</button>
-                <p className='modalT'>소환사이름을 입력해주세요.</p>
-                {/* <input className='modalB' placeholder='소환사이름' ></input>
-                <button className='selectB'>등록</button> */}
-                <CreateUser2 username={username} onChange={onChange} onCreate={onCreate}></CreateUser2>
-
-                <div className='close-wraper'>
-                    <button id='close' onClick={closeModal}>닫기</button>
-                </div>
-            </div>
-        </div>}
-
-        <div className= 'grey'>
-        <div className='idList'>
-            <table className='leaderTable'>
-                <tr>
-                    <th>순위</th>
-                    <th>아이디</th>
-                </tr>
-            </table>
+      {isShowing && (
+        <div className="modal-wrapper">
+          <Modal>
+            <div className="modal-title">내 아이디 등록하기</div>
             <div>
-            <UserList users={users}></UserList>
+              <p className="modalT">학교 이메일을 입력해주세요.</p>
+              <input
+                className="modalB"
+                placeholder="학교이메일"
+                type="email"
+                id="email"
+                onChange={onChangeInputs}
+              />
+              <button className="selectB" onClick={sendEmail}>
+                인증
+              </button>
+              {error.emailError === "" ? (
+                ""
+              ) : (
+                <p style={{ color: alarm.allowCode !== "" ? "green" : "red" }}>
+                  {error.emailError}
+                </p>
+              )}
             </div>
-        </div>
-        </div>
+            <div>
+              <p className="modalT">인증번호를 입력해주세요.</p>
+              <input
+                className="modalB"
+                placeholder="인증번호"
+                id="typeCode"
+                onChange={onChangeInputs}
+              />
+              <button className="selectB" onClick={onClickCode}>
+                확인
+              </button>
+              {alarm.text === "" ? (
+                ""
+              ) : alarm.code === 2 ? (
+                <p style={{ color: "green" }}>{alarm.text}</p>
+              ) : (
+                <p style={{ color: "red" }}>{alarm.text}</p>
+              )}
+            </div>
 
-        <div className='ldBox'>
-            {/* <input className='inputBox' placeholder='소환사 이름을 입력해주세요.'/>
-            <button type='submit' className='searchBtn'>검색하기</button> */}
-            <CreateUser username={username} onChange={onChange} onCreate={onCreate}></CreateUser>
+            <p className="modalT">소환사이름을 입력해주세요.</p>
+            <CreateUser2
+              username={inputCode.summonerName}
+              onChange={onChangeInputs}
+              onCreate={onCreate}
+              code={alarm.code}
+              error={error.summonerError}
+            />
+
+            <div>
+              <CloseModal onClick={closeModal}>닫기</CloseModal>
+            </div>
+          </Modal>
         </div>
-        </>
-    );
+      )}
+
+      <div className="grey">
+        <div className="idList">
+          <table className="leaderTable">
+            <tr>
+              <th>순위</th>
+              <th>아이디</th>
+              <th>티어</th>
+            </tr>
+          </table>
+          <div>
+            <UserList users={users}></UserList>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Leader;

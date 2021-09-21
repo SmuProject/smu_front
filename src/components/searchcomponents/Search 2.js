@@ -2,11 +2,11 @@ import React from 'react';
 import './search.css';
 import Test from './Test';
 import Info from './Info';
-import Position from './Position';
+import Position from '../Position';
 import Picked from './Picked';
 import History from './History';
 import Mininfo from './Mininfo';
-import Score from './Score';
+import Score from '../Score';
 import Levcs from './Levcs';
 import Item from './Item';
 import Team from './Team';
@@ -22,7 +22,7 @@ function search(){
     return(
         <div>
         <div className='UserName'>
-            소환사이름 
+            소환사이름
         </div>
 
         <div className='getNew'>
@@ -57,10 +57,11 @@ function search(){
             <Item/>
             <Team ID1='소환사ID1' ID2='소환사ID2' ID3='소환사ID3' ID4='소환사ID4' ID5='소환사ID5'/>
             <Team ID1='소환사ID6' ID2='소환사ID7' ID3='소환사ID8' ID4='소환사ID9' ID5='소환사ID10'/>
-            
+            <div className='back'>
             <Openedhied />
+            </div>
         </div>
-       
+
         <div className='list'>
             <History type='솔랭' when='2' result='승리'/>
             <Mininfo minipic='' spell1='스펠1' spell2='스펠2' lun1='룬1' lun2='룬2' champname='쓰레쉬'/>
@@ -69,7 +70,6 @@ function search(){
             <Item/>
             <Team ID1='소환사ID1' ID2='소환사ID2' ID3='소환사ID3' ID4='소환사ID4' ID5='소환사ID5'/>
             <Team ID1='소환사ID6' ID2='소환사ID7' ID3='소환사ID8' ID4='소환사ID9' ID5='소환사ID10'/>
-            
             <Openedhied />
         </div>
         </div>

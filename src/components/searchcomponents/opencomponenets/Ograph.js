@@ -1,7 +1,5 @@
 import React from 'react';
 import {VictoryBar} from 'victory';
-// 용에있는그래프
-
 
 const data = [
     { vacationSpot: "산", vote: 50 },

@@ -1,0 +1,29 @@
+.itemComBox {
+    width: 330px;
+    height: 60px;
+    background-color: lightblue;
+    position: absolute;
+}
+
+.arrow-right{
+	width: 0;
+	height: 0;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 20px solid purple;
+}
+
+.itemComBoxLine {
+    width: 750px;
+    height: 500px;
+    float: left;
+    background-color: darkcyan;
+    text-align: center;
+}
+
+.item-rate{
+    width: 750px;
+    height: 500px;
+    float: left;
+    margin-left: 10%;
+}
