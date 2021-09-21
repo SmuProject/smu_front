@@ -52,7 +52,7 @@ function Item() {
   }, []);
 
   return (
-    <div>
+    <div className='backG'>
       <div className="searchBox">
         <input
           className="inputBox"

@@ -61,3 +61,8 @@
   width: 100px;
   float: left;
 }
+
+.backG {
+  background-color: lightgray;
+  padding-bottom: 75px;
+}
