@@ -22,7 +22,7 @@ const Itembox = ({ chamiponNumber }) => {
     const getItemRank = async () => {
       try {
         const rep = await axios.get(
-          "https://blog.galbimandu.dev/itemrank/" + chamiponNumber
+          "https://blog.galbimandudev.com/itemrank/" + chamiponNumber
         );
         console.log(rep.data);
         setItemboxList(rep.data);

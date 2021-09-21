@@ -13,7 +13,7 @@ function Test({ id }) {
     const getData = async (id) => {
       try {
         const rep = await axios.get(
-          "https://blog.galbimandu.dev/champion/rate/" + id
+          "https://blog.galbimandudev.com/champion/rate/" + id
         );
         console.log(rep.data);
         const chmpion1 =

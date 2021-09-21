@@ -35,7 +35,7 @@ function Leader() {
   useEffect(() => {
     const fetchUsers = async () => {
       const rep = await axios.get(
-        "https://blog.galbimandu.dev/summoner/leader"
+        "https://blog.galbimandudev.com/summoner/leader"
       );
       setUsers(rep.data);
     };
