@@ -1,42 +1,71 @@
-import React from 'react';
-import './line.css';
+import React from "react";
+import "./line.css";
+import styled from "styled-components";
+const Div = styled.div`
+  display: flex;
+  background-color: lightgrey;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
 
-function line(){
-    return(
-        <>
-        <div className='selectBg'>
-            <select className='select'>
-                <option value="1" >Top</option>
-                <option value="2">Mid</option>
-                <option value="3">Jungle</option>
-                <option value="4">Bottom</option>
-                <option value="5">Supporter</option>
-            </select>
-        </div>
-        {/* <div className='lineBtnbox'>
-            <button className='lineBtn'>Top</button>
-            <button className='lineBtn'>Mid</button>
-            <button className='lineBtn'>Jungle</button>
-            <button className='lineBtn'>Ad-carry</button>
-            <button className='lineBtn'>Supporter</button>
-        </div> */}
+const TimeDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  height: 1000px;
+`;
 
-        <div className='time'>
-        <button className='timeBtn'>0 - 10min</button>
-        <div className='printChamp'></div>
-        <button className='timeBtn'>10 - 20min</button>
-        <div className='printChamp'></div>
-        <button className='timeBtn'>20 - 30min</button>
-        <div className='printChamp'></div>
-        <button className='timeBtn'>30 - 40min</button>
-        <div className='printChamp'></div>
-        <button className='timeBtn'>40min -</button>
-        <div className='printChamp'></div>
-        </div>
+const ChampDiv = styled.div`
+  margin-top: 10px;
+  width: 67%;
+  width: 300px;
+  height: 500px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+`;
 
-        <div className='footer'></div>
-        </>
-    );
+function line() {
+  return (
+    <>
+      <div className="selectBg">
+        <select className="select">
+          <option value="1">Top</option>
+          <option value="2">Mid</option>
+          <option value="3">Jungle</option>
+          <option value="4">Bottom</option>
+          <option value="5">Supporter</option>
+        </select>
+      </div>
+
+      <Div>
+        <TimeDiv>
+          <button className="timeBtn">0 - 10min</button>
+          <ChampDiv></ChampDiv>
+        </TimeDiv>
+        <TimeDiv>
+          <button className="timeBtn">10 - 20min</button>
+          <ChampDiv></ChampDiv>
+        </TimeDiv>
+
+        <TimeDiv>
+          <button className="timeBtn">20 - 30min</button>
+          <ChampDiv></ChampDiv>
+        </TimeDiv>
+        <TimeDiv>
+          <button className="timeBtn">30 - 40min</button>
+          <ChampDiv></ChampDiv>
+        </TimeDiv>
+        <TimeDiv>
+          <button className="timeBtn">40min -</button>
+          <ChampDiv></ChampDiv>
+        </TimeDiv>
+      </Div>
+
+      <div className="footer"></div>
+    </>
+  );
 }
 
 export default line;
