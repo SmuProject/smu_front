@@ -31,7 +31,7 @@ function Item() {
   };
 
   const onChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setchampionName(e.target.value);
   };
 
@@ -41,18 +41,18 @@ function Item() {
         const response = await axios.get(
           "https://blog.galbimandudev.com/champion"
         );
-        console.log(response.data);
+        // console.log(response.data);
         setChampions(response.data);
         setGetData(true);
       } catch (e) {
-        console.error(e);
+        // console.error(e);
       }
     };
     fetchUsers();
   }, []);
 
   return (
-    <div className='backG'>
+    <div className="backG">
       <div className="searchBox">
         <input
           className="inputBox"

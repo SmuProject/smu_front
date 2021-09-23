@@ -69,7 +69,7 @@ function Leader() {
   };
 
   const closeModal = () => {
-    console.log("11");
+    // console.log("11");
     setisShowing(false);
     setInputCode({
       email: "",
@@ -113,13 +113,13 @@ function Leader() {
     formdata.append("address", inputCode.email);
     const rep = await axios.post("https://blog.galbimandu.dev/email", formdata);
     const data = rep.data;
-    console.log(data);
+    // console.log(data);
     setAlarm({ ...alarm, allowCode: data });
     setError({ ...error, emailError: "이메일이 발송되었습니다." });
   };
 
   const onClickCode = () => {
-    console.log(alarm.allowCode);
+    // console.log(alarm.allowCode);
     if (alarm.allowCode === "") {
       alert("이메일 인증부터 진행해주세요");
     } else {
@@ -143,7 +143,7 @@ function Leader() {
     }
   };
   const onCreate = async () => {
-    console.log(">>>", alarm.code);
+    // console.log(">>>", alarm.code);
     if (alarm.code === 0 || alarm.code === 1) {
       alert("이메일 인증부터 진행해주세요!");
       return;
@@ -155,20 +155,20 @@ function Leader() {
         "https://blog.galbimandu.dev/summoner/test",
         formdata
       );
-      console.log(false);
+      // console.log(false);
       closeModal();
     } catch {
       setError({ ...error, summonerError: "잘못된 소환사명입니다." });
     }
   };
 
-    
-
-    return(
-        <>
-        <div className='leaderBtn'>
-            <button type='submit' className='searchBtn' onClick={openModal}>내 아이디 등록하기</button>
-        </div>
+  return (
+    <>
+      <div className="leaderBtn">
+        <button type="submit" className="searchBtn" onClick={openModal}>
+          내 아이디 등록하기
+        </button>
+      </div>
 
       {isShowing && (
         <div className="modal-wrapper">

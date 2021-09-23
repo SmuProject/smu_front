@@ -34,7 +34,7 @@ function Chamipon() {
     setImageUrl(() => e.target.src);
   };
   const onChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setchampionName(e.target.value);
   };
   useEffect(() => {
@@ -43,7 +43,7 @@ function Chamipon() {
         const response = await axios.get(
           "https://blog.galbimandudev.com/champion"
         );
-        console.log(response.data);
+        // console.log(response.data);
         setChampions(response.data); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {
         console.error(e);

@@ -8,14 +8,14 @@ function Test({ id }) {
   const [rate, setRateData] = useState([]);
 
   useEffect(() => {
-    console.log("champion ID >>>> ", id);
+    // console.log("champion ID >>>> ", id);
 
     const getData = async (id) => {
       try {
         const rep = await axios.get(
           "https://blog.galbimandudev.com/champion/rate/" + id
         );
-        console.log(rep.data);
+        // console.log(rep.data);
         const chmpion1 =
           rep.data.championRank1 !== null
             ? rep.data.championRank1.winrate * 100

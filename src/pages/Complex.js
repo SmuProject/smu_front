@@ -13,7 +13,7 @@ function Complex({ comrate }) {
   const [championName, setchampionName] = useState("");
 
   const onChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setchampionName(e.target.value);
   };
   useEffect(() => {
@@ -22,7 +22,7 @@ function Complex({ comrate }) {
         const response = await axios.get(
           "https://blog.galbimandudev.com/champion"
         );
-        console.log(response.data);
+        // console.log(response.data);
         setChampions(response.data); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {
         console.error(e);
@@ -35,7 +35,7 @@ function Complex({ comrate }) {
     setClicked(() => e.target.id);
   };
   const onClick = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
     setImageUrl(() => e.target.src);
   };
 

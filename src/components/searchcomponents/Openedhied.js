@@ -6,7 +6,7 @@ function Openedhied() {
   const [clicked, setClicked] = useState(true);
 
   const onClick = useCallback(() => {
-    console.log(clicked);
+    // console.log(clicked);
     setClicked(() => !clicked);
   }, [clicked]);
 

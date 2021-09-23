@@ -24,11 +24,11 @@ const Itembox = ({ chamiponNumber }) => {
         const rep = await axios.get(
           "https://blog.galbimandudev.com/itemrank/" + chamiponNumber
         );
-        console.log(rep.data);
+        // console.log(rep.data);
         setItemboxList(rep.data);
         setLine("TOP");
       } catch (error) {
-        console.error(error);
+        // console.error(error);
       }
     };
     getItemRank();
