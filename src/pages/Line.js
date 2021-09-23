@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./line.css";
 import styled from "styled-components";
+import * as _ from "lodash";
+import axios from "axios";
+import LineList from "../components/linecomponents/List";
+
 const Div = styled.div`
   display: flex;
   background-color: lightgrey;
@@ -17,49 +21,50 @@ const TimeDiv = styled.div`
   height: 1000px;
 `;
 
-const ChampDiv = styled.div`
-  margin-top: 10px;
-  width: 67%;
-  width: 300px;
-  height: 500px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-`;
+function Line() {
+  const [data, setData] = useState([]);
+  const [call, setCall] = useState(0);
+  useEffect(() => {
+    const lane = async () => {
+      const rep = await axios.get("/champion/lane");
 
-function line() {
+      console.log(rep.data);
+      setData(rep.data);
+      setCall(1);
+    };
+
+    if (call === 0) {
+      lane();
+    }
+  }, []);
+
   return (
     <>
       <div className="selectBg">
-        <select className="select">
-          <option value="1">Top</option>
-          <option value="2">Mid</option>
-          <option value="3">Jungle</option>
-          <option value="4">Bottom</option>
-          <option value="5">Supporter</option>
-        </select>
+        <h1>라인별 승률 순위</h1>
       </div>
 
       <Div>
         <TimeDiv>
-          <button className="timeBtn">0 - 10min</button>
-          <ChampDiv></ChampDiv>
+          <button className="timeBtn">TOP</button>
+          <LineList data={data} lineName={"TOP"} />
         </TimeDiv>
         <TimeDiv>
-          <button className="timeBtn">10 - 20min</button>
-          <ChampDiv></ChampDiv>
+          <button className="timeBtn">MIDDLE</button>
+          <LineList data={data} lineName={"MIDDLE"} />
         </TimeDiv>
 
         <TimeDiv>
-          <button className="timeBtn">20 - 30min</button>
-          <ChampDiv></ChampDiv>
+          <button className="timeBtn">JUNGLE</button>
+          <LineList data={data} lineName={"JUNGLE"} />
         </TimeDiv>
         <TimeDiv>
-          <button className="timeBtn">30 - 40min</button>
-          <ChampDiv></ChampDiv>
+          <button className="timeBtn">BOTTOM</button>
+          <LineList data={data} lineName={"BOTTOM"} />
         </TimeDiv>
         <TimeDiv>
-          <button className="timeBtn">40min -</button>
-          <ChampDiv></ChampDiv>
+          <button className="timeBtn">SUPPORT</button>
+          <LineList data={data} lineName={"NONE"} />
         </TimeDiv>
       </Div>
 
@@ -68,4 +73,4 @@ function line() {
   );
 }
 
-export default line;
+export default Line;
