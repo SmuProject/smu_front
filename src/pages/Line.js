@@ -29,8 +29,6 @@ function Line() {
       const rep = await axios.get(
         "https://blog.galbimandudev.com/champion/lane"
       );
-
-      console.log(rep.data);
       setData(rep.data);
       setCall(1);
     };
