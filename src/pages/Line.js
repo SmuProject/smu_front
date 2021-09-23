@@ -26,7 +26,9 @@ function Line() {
   const [call, setCall] = useState(0);
   useEffect(() => {
     const lane = async () => {
-      const rep = await axios.get("/champion/lane");
+      const rep = await axios.get(
+        "https://blog.galbimandudev.com/champion/lane"
+      );
 
       console.log(rep.data);
       setData(rep.data);
