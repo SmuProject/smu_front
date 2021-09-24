@@ -33,6 +33,7 @@ function Champ({ index, champData, winrate }) {
       <div style={{ flex: 1, textAlign: "center" }}>{index}</div>
       <div style={{ flex: 1, textAlign: "center" }}>
         <img src={champData.imageLink} alt={champData.championName} />
+        {champData.championName}
       </div>
       <div style={{ flex: 1, textAlign: "center" }}>{winrate}</div>
     </ChampBox>
