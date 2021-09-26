@@ -8,11 +8,15 @@ function Itemcombination({ itembox, line }) {
   const [isempty, setIsempty] = useState(0);
   useEffect(() => {
     const filteredList = (line) => {
-      return itembox.filter((item) => item.lane === line);
+      return itembox
+        .filter((item) => item.lane === line)
+        .filter((item) => item.item_1.items_Id !== 0)
+        .filter((item) => item.item_2.items_Id !== 0)
+        .filter((item) => item.item_3.items_Id !== 0);
     };
 
     const data = filteredList(line).slice(0, 3);
-    console.log("!!!! >>> ", data);
+
     setTopTen(data);
 
     if (data.length === 0) {

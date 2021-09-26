@@ -31,7 +31,12 @@ const Itembox = ({ chamiponNumber }) => {
           "https://blog.galbimandudev.com/itemrank/" + chamiponNumber
         );
         console.log(rep.data);
-        const sorting = _.chain(rep.data).sortBy("pickRate").reverse().value();
+        const sorting = _.chain(rep.data)
+          .sortBy("pickRate")
+          .reverse()
+          .sortBy("winRate")
+          .reverse()
+          .value();
         setItemboxList(sorting);
         console.log(sorting);
         setLine("TOP");
