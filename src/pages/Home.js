@@ -15,44 +15,46 @@ class Home extends Component {
 
   render() {
     return (
-      <>
-        <div>
-          <Input onCreate={this.handleCreate} history={this.props.history} />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "80px",
+          backgroundColor: "lightgrey",
+        }}
+      >
+        <div className="box">
+          <Link to="/champion">
+            <img src={menu1} className="homeimg" />
+          </Link>
+          <div class="title">챔피언별 승률 검색</div>
         </div>
-
-        <div className="img-box">
-          <div className="box">
-            <Link to="/champion">
-              <img src={menu1} className="homeimg" />
-            </Link>
-            <div class="title">챔피언별 승률 검색</div>
-          </div>
-          <div className="box">
-            <Link to="/line">
-              <img src={menu2} className="homeimg" />
-            </Link>
-            <div class="title2">라인별 승률 검색</div>
-          </div>
-          <div className="box">
-            <Link to="/complex">
-              <img src={menu3} className="homeimg" />
-            </Link>
-            <div class="title3">조합 승률 검색</div>
-          </div>
-          <div className="box">
-            <Link to="/item">
-              <img src={menu4} className="homeimg" />
-            </Link>
-            <div class="title4">아이템 티어 순위 검색</div>
-          </div>
-          <div className="box">
-            <Link to="/leader">
-              <img src={menu5} className="homeimg" />
-            </Link>
-            <div class="title5">리더보드</div>
-          </div>
+        <div className="box">
+          <Link to="/line">
+            <img src={menu2} className="homeimg" />
+          </Link>
+          <div class="title2">라인별 승률 검색</div>
         </div>
-      </>
+        <div className="box">
+          <Link to="/complex">
+            <img src={menu3} className="homeimg" />
+          </Link>
+          <div class="title3">조합 승률 검색</div>
+        </div>
+        <div className="box">
+          <Link to="/item">
+            <img src={menu4} className="homeimg" />
+          </Link>
+          <div class="title4">아이템 티어 순위 검색</div>
+        </div>
+        <div className="box">
+          <Link to="/leader">
+            <img src={menu5} className="homeimg" />
+          </Link>
+          <div class="title5">리더보드</div>
+        </div>
+      </div>
     );
   }
 }

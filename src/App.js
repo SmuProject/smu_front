@@ -11,14 +11,12 @@ import Complex from "./pages/Complex";
 import Item from "./components/itemcomponents/Item";
 import Leader from "./pages/Leader";
 import Nav from "./components/Nav";
-import Search from "./components/searchcomponents/Search";
-import Openteam from "./components/searchcomponents/opencomponenets/Openteam";
 import Complex2 from "./pages/Complex2";
 
 function App() {
   return (
     <>
-      <div className="relative">
+      <div style={{ backgroundColor: "lightgrey", height: "2000px" }}>
         <Router>
           <Nav />
 

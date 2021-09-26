@@ -28,10 +28,12 @@ function Chamipon() {
   const [championName, setchampionName] = useState("");
   const [isClicked, setClicked] = useState(0);
   const [imageUrl, setImageUrl] = useState("");
+  const [champName, setChampName] = useState("");
 
   const onClick = (e) => {
     setClicked(() => e.target.id);
     setImageUrl(() => e.target.src);
+    setChampName(() => e.target.alt);
   };
   const onChange = (e) => {
     // console.log(e.target.value);
@@ -54,7 +56,7 @@ function Chamipon() {
 
   return (
     <div>
-      <div className="cpSearch">
+      <div style={{ textAlign: "center" }}>
         <input
           className="cpInput"
           placeholder="챔피언 이름을 입력해주세요."
@@ -63,14 +65,16 @@ function Chamipon() {
         <button type="submit" className="cpBtn">
           검색하기
         </button>
-        <div>
-          {/* <Select.Provider value={isClicked}>
-                        <ChampionGrapList />
-                    </Select.Provider> */}
-        </div>
+        <div></div>
       </div>
 
-      <div className="backPic">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "10px",
+        }}
+      >
         <ChampionBox>
           <ChampionList
             chamipons={champions}
@@ -79,11 +83,12 @@ function Chamipon() {
           />
         </ChampionBox>
         {imageUrl === "" ? (
-          ""
+          <RateBox></RateBox>
         ) : (
           <RateBox>
             <div style={{ padding: "10px" }}>
               <img src={imageUrl} />
+              <div style={{ textAlign: "center" }}>{champName}</div>
             </div>
             <Test id={isClicked} />
           </RateBox>

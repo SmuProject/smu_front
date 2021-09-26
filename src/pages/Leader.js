@@ -164,10 +164,10 @@ function Leader() {
 
   return (
     <>
-      <div className="leaderBtn">
-        <button type="submit" className="searchBtn" onClick={openModal}>
-          내 아이디 등록하기
-        </button>
+      <div
+        style={{ display: "flex", justifyContent: "center", fontSize: "30px" }}
+      >
+        <h1> 리더보드</h1>
       </div>
 
       {isShowing && (
@@ -229,19 +229,54 @@ function Leader() {
           </Modal>
         </div>
       )}
+      <div
+        style={{
+          width: "100vw",
+          display: "flex",
+          textAlign: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
+      >
+        <div>
+          <button
+            style={{
+              width: "150px",
+              height: "50px",
+              borderRadius: "15px",
+              backgroundColor: "cadetblue",
+              float: "right",
+              marginRight: "650px",
+            }}
+            type="submit"
+            onClick={openModal}
+          >
+            내 아이디 등록하기
+          </button>
+        </div>
 
-      <div className="grey">
-        <div className="idList">
-          <table className="leaderTable">
+        <div
+          style={{
+            alignItems: "center",
+            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            margin: "10px",
+          }}
+        >
+          <table
+            style={{
+              width: "100vh",
+              backgroundColor: "rgb(214, 255, 239)",
+            }}
+          >
             <tr>
               <th>순위</th>
               <th>아이디</th>
               <th>티어</th>
             </tr>
+            <UserList users={users} />
           </table>
-          <div>
-            <UserList users={users}></UserList>
-          </div>
         </div>
       </div>
     </>
