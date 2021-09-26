@@ -5,17 +5,24 @@ import ChampionList from "../components/championcomponents/ChampionList";
 import OutCome from "../components/complex/OutCome";
 import axios from "axios";
 
+import styled from "styled-components";
+
+const ChampionBox = styled.div`
+  width: 640px;
+  height: 500px;
+  background-color: skyblue;
+  overflow-y: scroll;
+  margin-left: 200px;
+  padding-left: 30px;
+`;
 function Complex({ comrate }) {
   // 조합승률 콘솔에뜨는 d
   const [imageUrl, setImageUrl] = useState("");
-  const [isClicked, setClicked] = useState("line");
   const [champions, setChampions] = useState([]);
+  const [chamiponNumber, setChampionNumber] = useState(0);
   const [championName, setchampionName] = useState("");
+  const [imageName, setImageName] = useState("");
 
-  const onChange = (e) => {
-    // console.log(e.target.value);
-    setchampionName(e.target.value);
-  };
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -30,34 +37,36 @@ function Complex({ comrate }) {
     };
     fetchUsers();
   }, []);
-  // const
-  const clickMathc = (e) => {
-    setClicked(() => e.target.id);
-  };
+
   const onClick = (e) => {
     // console.log(e.target);
+    setChampionNumber(() => e.target.id);
+    setImageName(() => e.target.alt);
     setImageUrl(() => e.target.src);
   };
 
   return (
-    <div className="comContainer">
-      <div className="comBtn">
-        <button className="lineBtn" id="line" onClick={clickMathc}>
-          라인전
-        </button>
-        <button className="lineBtn" id="han" onClick={clickMathc}>
-          한타
-        </button>
-      </div>
-
-      <div className="comBox">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignContent: "center",
+        margin: "10px",
+        width: "1500px",
+      }}
+    >
+      <ChampionBox>
         <ChampionList
           chamipons={champions}
           championName={championName}
           onClick={onClick}
         />
-      </div>
-      <OutCome isClicked={isClicked} imageUrl={imageUrl} />
+      </ChampionBox>
+      <OutCome
+        imageUrl={imageUrl}
+        chamiponNumber={chamiponNumber}
+        championName={imageName}
+      />
     </div>
   );
 }

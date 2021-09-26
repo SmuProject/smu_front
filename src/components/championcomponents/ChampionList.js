@@ -62,7 +62,15 @@ const ChampionList = ({ chamipons, championName, onClick }) => {
   return (
     <div>
       <table>
-        <tbody>{championList}</tbody>
+        <tbody
+          style={{
+            alignItems: "center",
+            textAlign: "center",
+            justifyContent: "center",
+          }}
+        >
+          {championList}
+        </tbody>
       </table>
     </div>
   );

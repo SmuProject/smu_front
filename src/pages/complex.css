@@ -9,13 +9,13 @@
 }
 
 .comBox {
-  width: 700px;
+  
   height: 500px;
   background-color: #f9f9f9;
   margin-left: 7%;
   float: left;
   overflow-y: scroll;
-  padding-left: 50px;
+  
   border-radius: 10px;
 }
 
