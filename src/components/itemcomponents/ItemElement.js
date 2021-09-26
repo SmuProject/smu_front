@@ -45,10 +45,16 @@ export default function ItemElement({ item, index }) {
       )}
 
       <div style={{ flex: 1, textAlign: "center" }}>
-        {Math.round(item.pickRate * 100).toFixed(2)}%
+        {Math.round(item.pickRate * 100).toFixed(2) !== 0
+          ? Math.round(item.pickRate * 100).toFixed(2)
+          : 0.1}
+        %
       </div>
       <div style={{ flex: 1, textAlign: "center" }}>
-        {Math.round(item.winRate * 100).toFixed(2)}%
+        {Math.round(item.winRate * 100).toFixed(2) !== 0
+          ? Math.round(item.pickRate * 100).toFixed(2)
+          : 0.1}
+        %
       </div>
     </ItemBox>
   );
