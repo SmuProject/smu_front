@@ -62,10 +62,6 @@ function Line() {
           <button className="timeBtn">BOTTOM</button>
           <LineList data={data} lineName={"BOTTOM"} />
         </TimeDiv>
-        <TimeDiv>
-          <button className="timeBtn">SUPPORT</button>
-          <LineList data={data} lineName={"NONE"} />
-        </TimeDiv>
       </Div>
 
       <div className="footer"></div>

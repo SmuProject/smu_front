@@ -13,7 +13,7 @@ const HeaderDiv = styled.div`
 const ChampDiv = styled.div`
   margin-top: 10px;
   width: 67%;
-  width: 300px;
+  width: 400px;
   height: 800px;
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -27,7 +27,7 @@ const ChampBox = styled.div`
   margin: 20px;
 `;
 
-function Champ({ index, champData, winrate }) {
+function Champ({ index, champData, point, winrate }) {
   return (
     <ChampBox>
       <div style={{ flex: 1, textAlign: "center" }}>{index}</div>
@@ -35,6 +35,7 @@ function Champ({ index, champData, winrate }) {
         <img src={champData.imageLink} alt={champData.championName} />
         {champData.championName}
       </div>
+      <div style={{ flex: 1, textAlign: "center" }}>{point}</div>
       <div style={{ flex: 1, textAlign: "center" }}>{winrate}</div>
     </ChampBox>
   );
@@ -49,10 +50,12 @@ export default function LineList({ data, lineName }) {
       .filter({
         champLaneKey: { champLane: name },
       })
-      .sortBy("winrate")
+      .sortBy("point")
       .reverse()
       .value();
+
     if (line.length === 0) {
+      console.log(sorting);
       setLine(sorting);
     }
   }, [data, line]);
@@ -74,6 +77,9 @@ export default function LineList({ data, lineName }) {
             챔프
           </div>
           <div style={{ flex: 1, textAlign: "center", margin: "10px" }}>
+            포인트
+          </div>
+          <div style={{ flex: 1, textAlign: "center", margin: "10px" }}>
             승률
           </div>
         </HeaderDiv>
@@ -82,6 +88,7 @@ export default function LineList({ data, lineName }) {
             <Champ
               index={index + 1}
               champData={champ.champLaneKey.myChamp}
+              point={champ.point}
               winrate={champ.winrate}
             />
           </div>
