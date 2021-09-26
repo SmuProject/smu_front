@@ -4,13 +4,8 @@ function Recommand({ data, comb }) {
   const [combData, setCombData] = useState([]);
   useEffect(() => {
     console.log(data);
-    const filterData = data.filter((item) => item.winCnt + item.loseCnt > 0);
-    console.log(comb, " >>> ", filterData);
-    const sortingData = _.chain(filterData)
-      .orderBy(["winRate"], ["desc"])
-      .value();
-    console.log(comb, " >>> ", sortingData);
-    setCombData(sortingData);
+
+    setCombData(data);
   }, [data]);
 
   return (
@@ -29,7 +24,10 @@ function Recommand({ data, comb }) {
               <img src={combData[0].champ3.imageLink} alt="" />
             </div>
             <div style={{ flex: 1, textAlign: "center" }}>
-              {combData[0].winRate}
+              {Math.round(combData[0].winRate * 100).toFixed(2) < 0.1
+                ? 0.1
+                : Math.round(combData[0].winRate * 100).toFixed(2)}
+              %
             </div>
           </div>
         )}

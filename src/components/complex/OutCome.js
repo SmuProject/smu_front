@@ -60,11 +60,7 @@ function OutCome({ chamiponNumber, imageUrl, championName }) {
               <FlexDiv>챔피언3</FlexDiv>
               <FlexDiv>승률</FlexDiv>
             </div>
-            <Recommand data={data.comb1} comb="원거리 딜러 - 서포터 - 정글" />
-            <Recommand data={data.comb2} comb="정글 - 원딜 - 서포터" />
-            <Recommand data={data.comb3} comb="정글 - 미드 - 탑" />
-            <Recommand data={data.comb4} comb="미드 - 정글 - 탑" />
-            <Recommand data={data.comb5} comb="서폿 - 원딜 - 정글" />
+            <ListRecommand data={data} />
           </div>
         )}
       </div>
