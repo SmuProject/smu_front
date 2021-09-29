@@ -30,12 +30,12 @@ const Itembox = ({ chamiponNumber }) => {
         const rep = await axios.get(
           "https://blog.galbimandudev.com/itemrank/" + chamiponNumber
         );
-        console.log(rep.data);
+        // console.log(rep.data);
         const sorting = _.chain(rep.data)
           .orderBy(["pickRate", "winRate"], ["desc", "desc"])
           .value();
         setItemboxList(sorting);
-        console.log(sorting);
+        // console.log(sorting);
         setLine("TOP");
       } catch (error) {
         // console.error(error);

@@ -55,7 +55,7 @@ export default function LineList({ data, lineName }) {
       .value();
 
     if (line.length === 0) {
-      console.log(sorting);
+      // console.log(sorting);
       setLine(sorting);
     }
   }, [data, line]);

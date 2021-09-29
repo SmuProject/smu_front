@@ -158,6 +158,11 @@ function Leader() {
         "https://blog.galbimandudev.com/summoner/test",
         formdata
       );
+      // console.log(rep.data);
+      if (rep.data === false) {
+        setError({ ...error, summonerError: "잘못된 소환사명입니다." });
+        return;
+      }
       // console.log(false);
       closeModal();
     } catch {

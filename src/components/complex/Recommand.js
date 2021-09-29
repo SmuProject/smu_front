@@ -3,7 +3,7 @@ import * as _ from "lodash";
 function Recommand({ data, comb }) {
   const [combData, setCombData] = useState([]);
   useEffect(() => {
-    console.log(data);
+    // console.log(data);
 
     setCombData(data);
   }, [data]);
