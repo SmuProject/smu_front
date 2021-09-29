@@ -10,7 +10,7 @@ function ListRecommand({ data }) {
   const [check, setCheck] = useState(false);
   useEffect(() => {
     const setting = (data2) => {
-      const filterData = data2.filter((item) => item.winCnt + item.loseCnt > 4);
+      const filterData = data2.filter((item) => item.winCnt + item.loseCnt > 3);
       const sortingData = _.chain(filterData)
         .orderBy(["winRate"], ["desc"])
         .value();

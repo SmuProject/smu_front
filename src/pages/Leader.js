@@ -111,7 +111,10 @@ function Leader() {
 
     const formdata = new FormData();
     formdata.append("address", inputCode.email);
-    const rep = await axios.post("https://blog.galbimandu.dev/email", formdata);
+    const rep = await axios.post(
+      "https://blog.galbimandudev.com/email",
+      formdata
+    );
     const data = rep.data;
     // console.log(data);
     setAlarm({ ...alarm, allowCode: data });
@@ -152,7 +155,7 @@ function Leader() {
     formdata.append("name", inputCode.summonerName);
     try {
       const rep = await axios.post(
-        "https://blog.galbimandu.dev/summoner/test",
+        "https://blog.galbimandudev.com/summoner/test",
         formdata
       );
       // console.log(false);
